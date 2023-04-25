@@ -1,0 +1,76 @@
+[
+  '{{repeat(20, 30)}}',
+  {
+    id: '{{objectId()}}',
+    galleries: function() {
+      var galleries = [
+        '84-800x400.jpg',
+        '132-800x400.jpg',
+        '170-800x400.jpg',
+        '265-800x400.jpg',
+        '272-800x400.jpg',
+        '275-800x400.jpg',
+        '295-800x400.jpg',
+        '324-800x400.jpg',
+        '397-800x400.jpg',
+        '412-800x400.jpg',
+        '654-800x400.jpg',
+        '669-800x400.jpg',
+        '702-800x400.jpg',
+        '800-800x400.jpg',
+        '804-800x400.jpg',
+        '822-800x400.jpg',
+        '852-800x400.jpg',
+        '855-800x400.jpg',
+        '942-800x400.jpg',
+        '969-800x400.jpg',
+        '989-800x400.jpg',
+        '1005-800x400.jpg',
+      ];
+      return galleries.slice(Math.floor(Math.random()*galleries.length / 2), galleries.length - Math.floor(Math.random()*galleries.length/2));
+    },
+    price: '{{floating(500, 4000, 2)}}',
+    name: '{{lorem(1, "sentences")}}',
+    email: '{{email()}}',
+    phone: '+1 {{phone()}}',
+    address: '{{integer(100, 999)}} {{street()}}, {{city()}}, {{state()}}, {{integer(100, 10000)}}',
+    location: '{{city()}}',
+    detail: '{{lorem(3, "paragraphs")}}',
+    description: '{{lorem(1, "sentences")}}',
+    latitude: '{{floating(-90.000001, 90)}}',
+    longitude: '{{floating(-180.000001, 180)}}',
+    sleeps: '{{integer(12, 24)}}',
+    capacity: '{{integer(3, 6)}}',
+    bedrooms: '{{integer(4, 8)}}',
+    bathrooms: '{{integer(4, 8)}}',
+    minNights: '{{integer(3, 5)}}',
+    shared: '{{bool()}}',
+    isBooked: '{{bool()}}',
+    checkOutTime: '13:00',
+    reviews: [
+      '{{repeat(0, 20)}}',
+      {
+        rate: '{{integer(0, 5)}}',
+        review: '{{lorem(integer(1, 3), "paragraphs")}}'
+      }
+    ],
+    facilities: function() {
+      var facilities = [
+        'Air conditioning',
+        'Kid-friendly',
+        'Kitchen',
+        'Smoke-free',
+        'Washer',
+        'No fitness center',
+        'No hot tub',
+        'Not pet-friendly',
+        'Not wheelchair accessible',
+        '4 swimming pools',
+        'Beachfront Free',
+        'parking Free',
+        'WiFi'
+      ];
+      return facilities.slice(Math.floor(Math.random()*facilities.length / 2), facilities.length - Math.floor(Math.random()*facilities.length/2));
+    }
+  }
+]

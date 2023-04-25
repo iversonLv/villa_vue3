@@ -1,0 +1,224 @@
+swagger: "2.0"
+info:
+  description: ""
+  version: "1.0.0"
+  title: "Villa Party Vue3"
+host: "localhost:3004"
+basePath: "/"
+tags:
+- name: "Villa"
+  description: "Everything about Villa"
+schemes:
+- "http"
+paths:
+  /villas:
+    get:
+      tags:
+      - "Villa"
+      summary: "Finds villas(all)"
+      description: "Muliple parameters can be provided"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "_order"
+        in: "query"
+        description: "parameter for order the villa"
+        type: "string"
+        enum:
+        - 'asc'
+        - 'desc'
+        default: 'asc'
+      - name: "_limit"
+        in: "query"
+        description: "parameter for show the numbers of villas"
+        type: "number"
+        enum:
+        - 5
+        - 10
+        - 15
+        default: 5
+      - name: "_sort"
+        in: "query"
+        description: "parameter for sort the villas"
+        type: "string"
+        enum:
+        - 'name'
+        - 'location'
+        - 'price'
+        - 'capacity'
+        default: 'name'
+      - name: 'availableDate.from_gte'
+        in: "query"
+        type: 'string'
+      - name: 'availableDate.to_lte'
+        in: "query"
+        type: 'string'
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Villa"
+        400:
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/ApiResponse"
+  /villas/{villaId}:
+    get:
+      tags:
+      - "Villa"
+      summary: "Finds Villa by id"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "villaId"
+        in: "path"
+        description: "Villa id"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Ok"
+          schema:
+            $ref: "#/definitions/Villa"
+        400:
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/ApiResponse"
+        404:
+          description: "Villa not foud"
+          schema:
+            $ref: "#/definitions/ApiResponse"
+    patch:
+      tags:
+      - "Villa"
+      summary: "Update an existing Villa"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "villaId"
+        in: "path"
+        description: "Villa id"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        description: "Villa object that needs to be added"
+        required: true
+        schema:
+          type: "object"
+          default: {}
+      responses:
+        201:
+          description: "Created"
+          schema:
+            $ref: "#/definitions/Villa"
+        400:
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/ApiResponse"
+        404:
+          description: "Villa not foud"
+          schema:
+            $ref: "#/definitions/ApiResponse"
+   
+  
+definitions:
+  Villa:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      galleries:
+        type: "array"
+        items:
+          type: "string"
+      price:
+        type: "number"
+      name:
+        type: "string"
+      email:
+        type: "string"
+      phone:
+        type: "string"
+      address:
+        type: "string"
+      location:
+        type: "string"
+      detail:
+        type: "string"
+      description:
+        type: "string"
+      latitude:
+        type: "number"
+      longitude:
+        type: "number"
+      sleeps:
+        type: "number"
+      capacity:
+        type: "number"
+      bedrooms:
+        type: "number"
+      bathrooms:
+        type: "number"
+      minNights:
+        type: "number"
+      shared:
+        type: "boolean"
+      isBooked:
+        type: "boolean"
+      checkOutTime:
+        type: "string"
+      availableDate:
+        type: 'object'
+        properties:
+          from: 
+            type: 'string'
+          to:
+            type: 'string'
+      reviews:
+        type: "array"
+        items:
+          $ref: "#/definitions/Review"
+      facilities:
+        type: 'array'
+        items:
+          type: 'string'
+          enum:
+          - 'Air conditioning'
+          - 'Kid-friendly'
+          - 'Kitchen'
+          - 'Smoke-free'
+          - 'Washer'
+          - 'No fitness center'
+          - 'No hot tub'
+          - 'Not pet-friendly'
+          - 'Not wheelchair accessible'
+          - '4 swimming pools'
+          - 'Beachfront Free'
+          - 'parking Free'
+          - 'WiFi'
+    xml:
+      name: "Villa"
+  Review:
+    type: "object"
+    properties:
+      rate:
+        type: "number"
+      review:
+        type: "string"
+    xml:
+      name: "Review"
+  ApiResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      type:
+        type: "string"
+      message:
+        type: "string"

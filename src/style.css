@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+  :root {
+    font-family: Roboto;
+    height: 100%;
+  }
+
+  body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    font-size: var(--el-font-size-base);
+    color: var(--el-text-color-primary);
+  }
+
+  ul,
+  li {
+    list-style: none;
+  }
+
+  h1 {
+    font-size: var(--el-font-size-extra-large);
+  }
+
+  h2 {
+    font-size: var(--el-font-size-large);
+  }
+
+  h3 {
+    font-size: var(--el-font-size-medium);
+  }
+
+  .danger-txt {
+    color: var(--el-color-danger)
+  }
+  
+  .brand-txt {
+    color: var(--el-color-primary);
+  }
+
+  /* override element ui plus style */
+  .el-input__wrapper {
+    flex-grow: unset;
+  }
+
+  .el-image__error {
+    width: 100%;
+    height: 100%;
+    background: var(--el-fill-color-light);
+  }

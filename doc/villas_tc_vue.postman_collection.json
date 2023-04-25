@@ -1,0 +1,119 @@
+{
+	"info": {
+		"_postman_id": "1665623e-db62-4587-823e-b39ffb8e3aa3",
+		"name": "villas_tc_vue",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "search villas(all)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/villas/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"villas",
+						""
+					],
+					"query": [
+						{
+							"key": "_sort",
+							"value": "name",
+							"disabled": true
+						},
+						{
+							"key": "_limit",
+							"value": "5",
+							"disabled": true
+						},
+						{
+							"key": "_order",
+							"value": "asc",
+							"disabled": true
+						},
+						{
+							"key": "availableDate.from_gte",
+							"value": "2022-08-17",
+							"disabled": true
+						},
+						{
+							"key": "availableDate.to_lte",
+							"value": "2022-08-17",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "search villa",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/villas/62fc66019100e475f0bca6c3",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"villas",
+						"62fc66019100e475f0bca6c3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update villa",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"isBooked\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/villas/62fc66019100e475f0bca6c3",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"villas",
+						"62fc66019100e475f0bca6c3"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
